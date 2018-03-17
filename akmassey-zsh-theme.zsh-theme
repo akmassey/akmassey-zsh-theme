@@ -1,5 +1,5 @@
 function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
+    LC_ALL=C echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
 function prompt_char {
@@ -124,7 +124,7 @@ function notes_count() {
   else
     local NOTES_PATTERN=$1;
   fi
-    grep -ERn "\b($NOTES_PATTERN)\b" {app,config,lib,spec,test} 2>/dev/null | wc -l | sed 's/ //g'
+    LC_ALL=C grep -ERn "\b($NOTES_PATTERN)\b" {app,config,lib,spec,test} 2>/dev/null | wc -l | sed 's/ //g'
 }
 
 function notes_prompt() {
